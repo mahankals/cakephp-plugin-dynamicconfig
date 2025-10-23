@@ -1,7 +1,7 @@
 {
-  "name": "mahankals/package-name",
+  "name": "mahankals/cakephp-plugin-dynamicconfig",
   "version": "1.0.0",
-  "description": "package-description",
+  "description": "Update config from UI instead of changing fron backend & store it into database.",
   "keywords": [
     "cakephp",
     "plugin"
@@ -16,11 +16,11 @@
   ],
   "require": {
     "php": ">=8.1",
-    "cakephp/cakephp": "5.1.*"
+    "cakephp/cakephp": "5.*"
   },
   "autoload": {
     "psr-4": {
-      "package-title\\": "src/"
+      "DynamicConfig\\": "src/"
     }
   },
   "extra": {

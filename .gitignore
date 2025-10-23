@@ -61,11 +61,4 @@ Homestead.yaml
 /logs/*
 /tmp/*
 /vendor/*
-
-# Laravel specific files #
-##########################
-/public/build
-/public/hot
-/public/storage
-/storage/*.key
-/storage/pail
+/config/Migrations/schema-dump-default.lock
