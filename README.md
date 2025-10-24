@@ -35,13 +35,13 @@ You can install this plugin directly from GitHub using Composer:
            "type": "vcs",
            "url": "https://github.com/mahankals/cakephp-plugin-dynamicconfig"
        }
-   ]
+   ],
    ```
 
 1. Require the plugin via Composer:
 
    ```bash
-   composer require mahankals/cakephp-plugin-dynamicconfig
+   composer require mahankals/cakephp-plugin-dynamicconfig:dev-main
    ```
 
 1. Load the plugin
@@ -60,6 +60,7 @@ You can install this plugin directly from GitHub using Composer:
 
 ## Create tables with migration
 
+
 ```bash
  bin/cake migrations migrate --plugin DynamicConfig
  ```
@@ -69,6 +70,8 @@ You can install this plugin directly from GitHub using Composer:
 You can update config value from [http://localhost:8765/configuration](http://localhost:8765/configuration) url.
 
 ## Debug Config (optional)
+
+in any template file
 
 ```html
 <div><b>TimeZone: </b><?= \Cake\Core\Configure::read('App.defaultTimezone') ?></div>
