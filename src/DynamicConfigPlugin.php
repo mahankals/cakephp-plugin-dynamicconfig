@@ -61,15 +61,6 @@ class DynamicConfigPlugin extends BasePlugin
                     'configuration',
                     ['controller' => 'AppSettings', 'action' => 'index']
                 );
-                // $builder->connect('configuration/add', ['controller' => 'AppSettings', 'action' => 'add']);
-                $builder->connect(
-                    'configuration/edit/{id}',
-                    ['controller' => 'AppSettings', 'action' => 'edit']
-                )->setPatterns(['id' => '\d+'])->setPass(['id']);
-                $builder->connect(
-                    'configuration/delete/{id}',
-                    ['controller' => 'AppSettings', 'action' => 'delete']
-                )->setPatterns(['id' => '\d+'])->setPass(['id']);
             }
         );
         parent::routes($routes);

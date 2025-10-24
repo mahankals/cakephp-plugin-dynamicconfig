@@ -6,11 +6,8 @@ use Cake\Core\Configure;
  * @var \App\View\AppView $this
  * @var iterable<\Cake\Datasource\EntityInterface> $appSettings
  */
-
-
 ?>
 <div class="appSettings index content">
-    <?= "" //$this->Html->link(__('New App Setting'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('App Settings ') ?></h3>
     <div class="table-responsive">
         <table>
@@ -19,7 +16,6 @@ use Cake\Core\Configure;
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('config_key') ?></th>
                     <th><?= $this->Paginator->sort('value') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -27,9 +23,20 @@ use Cake\Core\Configure;
                     <tr>
                         <td><?= $this->Number->format($appSetting->id) ?></td>
                         <td><?= h($appSetting->config_key) ?></td>
-                        <td><?= h($appSetting->value) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $appSetting->id]) ?>
+                        <td>
+                            <?php if ($id == $appSetting->id): ?>
+                                <?= $this->Form->create($appSetting) ?>
+                                <?= $this->Form->control('value', ['label' => false]) ?>
+                                <?= $this->Form->button(__('Submit')) ?>
+                                <?= $this->Html->link(__('Cancel'), [
+                                    'controller' => $this->request->getParam('controller'),
+                                    'action' => $this->request->getParam('action')
+                                ], ['class' => 'button secondary']) ?>
+                                <?= $this->Form->end() ?>
+                            <?php else: ?>
+                                <?= h($appSetting->value) ?>
+                                <?= $this->Html->link(__('Edit'), ['?' => ['id' => $appSetting->id]], ['class' => 'float-right']) ?>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
