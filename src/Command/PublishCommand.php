@@ -75,7 +75,6 @@ class PublishCommand extends Command
 
         $files = array(
             'AppSettings' . DS . 'index.php',
-            'AppSettings' . DS . 'edit.php',
         );
 
         foreach ($files as $file) {
