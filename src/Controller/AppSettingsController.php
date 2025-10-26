@@ -21,7 +21,7 @@ class AppSettingsController extends AppController
      */
     public function index()
     {
-        $query = $this->AppSettings->find();
+        $query = $this->AppSettings->find()->where(['module' => 'App']);
         $appSettings = $this->paginate($query);
         $id = $this->request->getParam('id') ?? $this->request->getQuery('id') ?? null;
 

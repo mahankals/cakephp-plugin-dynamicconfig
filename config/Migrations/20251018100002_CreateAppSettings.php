@@ -17,6 +17,11 @@ class CreateAppSettings extends BaseMigration
     public function change(): void
     {
         $table = $this->table('app_settings');
+        $table->addColumn('module', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => false,
+        ]);
         $table->addColumn('config_key', 'string', [
             'default' => null,
             'limit' => 255,
@@ -27,23 +32,27 @@ class CreateAppSettings extends BaseMigration
             'null' => false,
         ]);
         $table->addColumn('type', 'string', [
-            'default' => null,
+            'default' => 'string',
             'limit' => 255,
             'null' => false,
+        ]);
+        $table->addColumn('options', 'text', [
+            'default' => null,
+            'null' => true,
         ]);
         $table->create();
 
         // Add default mail configuration
         $this->execute("
-            INSERT INTO app_settings (config_key, value, type)
+            INSERT INTO app_settings (module, config_key, value, type)
             VALUES
-            ('App.defaultTimezone', 'UTC', 'string'),
-            ('Mail.default.from', 'no-reply@example.com', 'string'),
-            ('EmailTransport.default.host', 'localhost', 'string'),
-            ('EmailTransport.default.port', '25', 'integer'),
-            ('EmailTransport.default.username', 'user', 'string'),
-            ('EmailTransport.default.password', 'secret', 'string'),
-            ('EmailTransport.default.tls', '1', 'boolean')
+            ('App', 'App.defaultTimezone', 'UTC', 'string'),
+            ('App', 'Mail.default.from', 'no-reply@example.com', 'string'),
+            ('App', 'EmailTransport.default.host', 'localhost', 'string'),
+            ('App', 'EmailTransport.default.port', '25', 'integer'),
+            ('App', 'EmailTransport.default.username', 'user', 'string'),
+            ('App', 'EmailTransport.default.password', 'secret', 'string'),
+            ('App', 'EmailTransport.default.tls', '1', 'boolean')
         ");
     }
 }
