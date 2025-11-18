@@ -9,7 +9,6 @@
 [![GitHub Forks](https://img.shields.io/github/forks/mahankals/cakephp-plugin-dynamicconfig?style=social)](https://github.com/mahankals/cakephp-plugin-dynamicconfig/network/members)
 [![GitHub Watchers](https://img.shields.io/github/watchers/mahankals/cakephp-plugin-dynamicconfig?style=social)](https://github.com/mahankals/cakephp-plugin-dynamicconfig/watchers)
 
-
 <!-- packagist details
 [![Latest Stable Version](https://poser.pugx.org/mahankals/cakephp-plugin-dynamicconfig/v/stable)](https://packagist.org/packages/mahankals/cakephp-plugin-dynamicconfig)
 [![Total Downloads](https://poser.pugx.org/mahankals/cakephp-plugin-dynamicconfig/downloads)](https://packagist.org/packages/mahankals/cakephp-plugin-dynamicconfig)
@@ -30,12 +29,12 @@ You can install this plugin directly from GitHub using Composer:
 1. Add the GitHub repository to your app's `composer.json`:
 
    ```json
-   "repositories": [
-       {
+   "repositories": {
+       "mahankals/cakephp-plugin-dynamicconfig": {
            "type": "vcs",
            "url": "https://github.com/mahankals/cakephp-plugin-dynamicconfig"
        }
-   ],
+   },
    ```
 
 1. Require the plugin via Composer:
@@ -60,10 +59,9 @@ You can install this plugin directly from GitHub using Composer:
 
 ## Create tables with migration
 
-
 ```bash
  bin/cake migrations migrate --plugin DynamicConfig
- ```
+```
 
 ## Update config value
 
@@ -74,9 +72,16 @@ You can update config value from [http://localhost:8765/configuration](http://lo
 in any template file
 
 ```html
-<div><b>TimeZone: </b><?= \Cake\Core\Configure::read('App.defaultTimezone') ?></div>
-<div><b>Current Time: </b><?= \Cake\I18n\DateTime::now(); ?></div>
+<div>
+  <b>TimeZone: </b
+  ><?= \Cake\Core\Configure::read('App.defaultTimezone') ?>
+</div>
+<div>
+  <b>Current Time: </b
+  ><?= \Cake\I18n\DateTime::now(); ?>
+</div>
 ```
+
 **Note:** Update `App.defaultTimezone` & check Current Time.
 
 ## Customization (optional)
